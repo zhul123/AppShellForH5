@@ -30,6 +30,15 @@ android {
         }
     }
 
+    signingConfigs {
+        config {
+            storeFile file("key.jks") //签名文件路径
+            storePassword "fysystem"
+            keyAlias "com.capinfo.fysystem"
+            keyPassword "fysystem"  //签名密码
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
