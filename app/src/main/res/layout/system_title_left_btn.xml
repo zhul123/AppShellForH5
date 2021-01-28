@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/system_title_left"
+    style="@style/textFont.title_sec_text"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/title_height"
+    android:layout_alignParentLeft="true"
+    android:layout_centerVertical="true"
+    android:drawableLeft="@drawable/btn_navbar_back"
+    android:drawablePadding="@dimen/title_padding_left"
+    android:ellipsize="end"
+    android:gravity="center"
+    android:maxEms="5"
+    android:paddingLeft="@dimen/title_padding_left"
+    android:paddingRight="@dimen/title_padding_right"
+    android:singleLine="true"
+    android:textColor="@color/primary"
+    android:visibility="invisible"  />

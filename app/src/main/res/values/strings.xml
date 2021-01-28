@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">防疫系统</string>
+    <string name="title_back">返回</string>
+    <string name="response_error">重新加载</string>
+    <string name="label_explain">重新加载</string>
+    <string name="label_response_error">加载失败</string>
+    <string name="label_null_data">暂无内容</string>
+    <string name="label_no_internet">暂无网络连接</string>
+    <string name="loading">加载中</string>
+    <string name="app_not_installed">您还没有安装所需打开的App</string>
+    <string name="tip_no_network">当前网络不可用，请检查网络设置</string>
+    <string name="toast_exit">再按一次退出~</string>
+    <string name="comp_pedometer_launcher_tips_permission_storage">存储空间</string>
+
+    <string name="floor_pull_down_to_refresh">下拉可以刷新</string>
+    <string name="floor_pull_down_refreshing">刷新中…</string>
+    <string name="floor_pull_up_refresh_finish">刷新完成</string>
+    <string name="floor_pull_up_refresh_failed">刷新失败</string>
+    <string name="floor_release_and_refresh_immediately">松开立即刷新</string>
+
+</resources>

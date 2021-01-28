@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#3296f9</color>
+    <color name="transparent">#00000000</color>
+    <color name="black_dark">#333333</color>
+    <color name="span_line_color">#EEEEEE</color>
+    <color name="title_prompt_bg_color">#ffd4d2</color>
+    <color name="right_title_disenable">#c6c6c6</color>
+    <color name="common_dialog_default_color">#272624</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="floor_pull_down_refresh_text_color">#b2b2b2</color>
+
+</resources>

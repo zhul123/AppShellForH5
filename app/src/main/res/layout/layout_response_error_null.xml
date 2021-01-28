@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clickable="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/status_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/icon_no_internet"/>
+
+    <TextView
+        android:id="@+id/status_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/common_font_size_normal"
+        android:gravity="center"
+        android:layout_marginTop="35dip"/>
+
+    <TextView
+        android:id="@+id/explain_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/common_font_size_small"
+        android:layout_marginTop="20dip"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/reload_btn"
+        android:layout_width="108dp"
+        android:layout_height="36dp"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/common_font_size_normal"
+        android:text="@string/response_error"
+        android:layout_marginTop="68dip"/>
+
+
+</LinearLayout>

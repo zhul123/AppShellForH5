@@ -1,0 +1,17 @@
+<resources>
+    <!-- dialog title style-->
+    <style name="okpermission_common_dialog_title_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/okpermission_title_text_color</item>
+        <item name="android:textSize">@dimen/okpermission_common_dialog_title_textsize</item>
+    </style>
+
+    <!-- dialog msg style-->
+    <style name="okpermission_common_dialog_msg_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#686868</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

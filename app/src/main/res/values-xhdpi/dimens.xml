@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- title -->
+    <dimen name="title_height">44dip</dimen>
+    <dimen name="title_prompt_height">40dip</dimen>
+    <dimen name="main_bottom_height">49dip</dimen>
+    <dimen name="title_text_size">16sp</dimen>
+    <dimen name="title_sec_text_size">14sp</dimen>
+    <dimen name="title_third_text_size">12sp</dimen>
+    <dimen name="title_padding_left">10dip</dimen>
+    <dimen name="title_padding_right">10dip</dimen>
+    <dimen name="title_sec_padding">4dip</dimen>
+    <dimen name="title_max_width">240dip</dimen>
+    <dimen name="default_textsize">14sp</dimen>
+    <dimen name="default_small_textsize">11sp</dimen>
+    <dimen name="default_big_textsize">16sp</dimen>
+
+    <!-- fontsize -->
+    <dimen name="common_font_size_large">20sp</dimen>
+    <dimen name="common_font_size_normal">18sp</dimen>
+    <dimen name="common_font_size_small">16sp</dimen>
+    <dimen name="common_font_size_mini">14sp</dimen>
+
+    <dimen name="common_dialog_msg_textsize">@dimen/common_font_size_small</dimen>
+
+
+    <dimen name="custom_toast_width">140dip</dimen>
+    <dimen name="custom_toast_height">120dip</dimen>
+
+
+    <dimen name="dimen_1">1dp</dimen>
+    <dimen name="dimen_2">2dp</dimen>
+    <dimen name="dimen_3">3dp</dimen>
+    <dimen name="dimen_4">4dp</dimen>
+    <dimen name="dimen_5">5dp</dimen>
+    <dimen name="dimen_6">6dp</dimen>
+    <dimen name="dimen_7">7dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_9">9dp</dimen>
+    <dimen name="dimen_10">10dp</dimen>
+    <dimen name="dimen_11">11dp</dimen>
+    <dimen name="dimen_12">12dp</dimen>
+    <dimen name="dimen_13">13dp</dimen>
+    <dimen name="dimen_14">14dp</dimen>
+    <dimen name="dimen_15">15dp</dimen>
+    <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_17">17dp</dimen>
+    <dimen name="dimen_18">18dp</dimen>
+    <dimen name="dimen_19">19dp</dimen>
+    <dimen name="dimen_20">20dp</dimen>
+    <dimen name="dimen_21">21dp</dimen>
+    <dimen name="dimen_22">22dp</dimen>
+    <dimen name="dimen_23">23dp</dimen>
+
+    <dimen name="font_size_8">8dp</dimen>
+    <dimen name="font_size_9">9dp</dimen>
+    <dimen name="font_size_10">10dp</dimen>
+    <dimen name="font_size_11">11dp</dimen>
+    <dimen name="font_size_12">12dp</dimen>
+    <dimen name="font_size_13">13dp</dimen>
+    <dimen name="font_size_14">14dp</dimen>
+    <dimen name="font_size_15">15dp</dimen>
+    <dimen name="font_size_16">16dp</dimen>
+
+</resources>

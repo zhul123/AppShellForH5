@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_parent_ll"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title_parent_inner_rl"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_height"
+        android:layout_gravity="center_vertical"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/system_title_left"
+            layout="@layout/system_title_left_btn" />
+
+        <!--  <TextView
+              android:id="@+id/system_title_left"
+              style="@style/textFont.title_sec_text"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_alignParentLeft="true"
+              android:layout_centerVertical="true"
+              android:background="@drawable/title_default_btn_bg"
+              android:drawableLeft="@drawable/btn_navbar_back"
+              android:drawablePadding="@dimen/title_padding_left"
+              android:ellipsize="end"
+              android:gravity="center"
+              android:maxEms="5"
+              android:paddingLeft="@dimen/title_padding_left"
+              android:paddingRight="@dimen/title_padding_right"
+              android:singleLine="true"
+              android:textColor="@color/white"
+              android:visibility="invisible" />-->
+
+        <LinearLayout
+            android:id="@+id/ll_right_click"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/fl_title_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:paddingRight="@dimen/title_padding_right">
+
+                <TextView
+                    android:id="@+id/system_title_right"
+                    style="@style/textFont.title_sec_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right|center_vertical"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxEms="8"
+                    android:paddingLeft="@dimen/title_padding_left"
+                    android:paddingRight="@dimen/title_padding_right"
+                    android:maxLines="1"
+                    android:textColor="@drawable/title_right_text_color"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/system_title_right_badge"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/circle_solid_bg"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/system_title_right_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/title_padding_left"
+                android:layout_marginRight="@dimen/title_padding_right"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/title_height"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/title_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/title_padding_left"
+                android:paddingRight="@dimen/title_padding_right">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:drawablePadding="@dimen/title_sec_padding"
+                    android:ellipsize="end"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:maxWidth="@dimen/title_max_width"
+                    android:singleLine="true"
+                    android:textColor="@color/black_dark"
+                    android:textSize="@dimen/title_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_sec_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:drawablePadding="@dimen/title_sec_padding"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/black_dark"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/bottom_span_line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/span_line_color" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/no_network_prompt"
+        layout="@layout/no_net_work_title_layout" />
+
+</LinearLayout>

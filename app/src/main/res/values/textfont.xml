@@ -1,0 +1,29 @@
+<resources>
+
+    <style name="textFont" parent="android:Widget" />
+    <!-- 字体sytle定义 start ↓ -->
+    
+    <style name="textFont.default">
+        <item name="android:textSize">@dimen/default_textsize</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="textFont.default_big">
+        <item name="android:textSize">@dimen/default_big_textsize</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="textFont.default_small">
+        <item name="android:textSize">@dimen/default_small_textsize</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    
+    <style name="textFont.title_sec_text">
+        <item name="android:textSize">@dimen/title_sec_text_size</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    
+      <style name="textFont.dialog_msg">
+        <item name="android:textSize">@dimen/common_dialog_msg_textsize</item>
+        <item name="android:textColor">@color/common_dialog_default_color</item>
+    </style>
+    
+</resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/system_title">
+
+        <ImageView
+            android:id="@+id/screenshot_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smartrefreshlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                app:srlAccentColor="@color/floor_pull_down_refresh_text_color"
+                app:srlTextSizeTitle="14sp"
+                app:srlDrawableSize="20dp"
+                app:srlDrawableArrowSize="10dp"
+                app:srlDrawableProgressSize="10dp"
+                app:srlDrawableMarginRight="10dp"
+                app:srlDrawableArrow="@drawable/icon_loading"
+                app:srlDrawableProgress="@drawable/icon_loading"
+                app:srlClassicsSpinnerStyle="Translate"
+                app:srlEnableLastTime="false"
+                app:srlTextPulling="@string/floor_pull_down_to_refresh"
+                app:srlTextRelease="@string/floor_release_and_refresh_immediately"
+                app:srlTextLoading="@string/floor_pull_down_refreshing"
+                app:srlTextFinish="@string/floor_pull_up_refresh_finish"
+                app:srlTextFailed="@string/floor_pull_up_refresh_failed"
+                />
+
+            <com.tencent.smtt.sdk.WebView
+                android:id="@+id/webView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </RelativeLayout>
+
+    <com.capinfo.fysystem.views.PageNullOrErrorView
+        android:id="@+id/page_status_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/system_title"
+        android:visibility="gone" />
+
+    <!--<include-->
+    <!--android:id="@+id/error_layout" -->
+    <!--layout="@layout/no_net_work_layout"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"/>-->
+
+    <com.capinfo.fysystem.views.WebSystemTitle
+        android:id="@+id/system_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@id/system_title"
+        android:progressDrawable="@drawable/progressbar_bg" />
+
+    <include
+        android:id="@+id/loading_rl"
+        layout="@layout/loading_progress_ui"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/system_title"
+        android:visibility="gone" />
+
+</RelativeLayout>

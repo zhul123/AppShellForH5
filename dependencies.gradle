@@ -1,0 +1,52 @@
+ext.change = [
+
+        code: 100,
+        name: '1.0.0'
+]
+
+ext.versions = [
+
+        minSdk                  : 16,
+        targetSdk               : 30,
+        compileSdk              : 30,
+
+        buildTools              : '30.0.2',
+
+        applicationId           : "com.capinfo.fysystem",
+
+        androidGradlePlugin     : '4.1.1',
+        alibabaARouter          : '1.5.1',
+        alibabaARouterCompiler  : '1.5.1',
+        alibabaARouterAnnotation: '1.0.4',
+        alibabaARouterRegister  : '1.0.2',
+        appcompat               : '1.1.0',
+        material                : '1.1.0',
+        recyclerview            : '1.1.0',
+        constraintlayout        : '1.1.3',
+        systembartint           : '1.0.3',
+        smartRefresh            : "1.1.2",
+]
+
+ext.gradlePlugins = [
+        android: "com.android.tools.build:gradle:$versions.androidGradlePlugin",
+        apt    : "com.neenbedankt.gradle.plugins:android-apt:$versions.aptGradlePlugin"
+]
+
+
+ext.libraries = [
+        alibabaARouter          : "com.alibaba:arouter-api:$versions.alibabaARouter",
+        alibabaARouterCompiler  : "com.alibaba:arouter-compiler:$versions.alibabaARouterCompiler",
+        alibabaARouterAnnotation: "com.alibaba:arouter-annotation:$versions.alibabaARouterAnnotation",
+        alibabaARouterRegister  : "com.alibaba:arouter-register:$versions.alibabaARouterRegister",
+
+        appcompat               : "androidx.appcompat:appcompat:$versions.appcompat",
+        material                : "com.google.android.material:material:$versions.material",
+        constraintlayout        : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
+        systembartint           : "com.readystatesoftware.systembartint:systembartint:$versions.systembartint",
+        recyclerview            : "androidx.recyclerview:recyclerview:$versions.recyclerview",
+        smartRefreshLayout      : "com.scwang.smartrefresh:SmartRefreshLayout:$versions.smartRefresh",
+]
+
+ext.mavenUrl = [
+        photoView: "https://jitpack.io",
+]

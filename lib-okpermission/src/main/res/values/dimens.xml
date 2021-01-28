@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="okpermission_margin_top_bottom">20dp</dimen>
+    <dimen name="okpermission_margin_left_right">10dp</dimen>
+    <dimen name="okpermission_title_text_size">20sp</dimen>
+    <dimen name="okpermission_msg_text_size">14sp</dimen>
+    <dimen name="okpermission_button_text_size">22sp</dimen>
+
+    <dimen name="okpermission_common_dialog_title_textsize">@dimen/okpermission_common_font_size_large</dimen>
+    <dimen name="okpermission_common_font_size_large">20sp</dimen>
+
+</resources>

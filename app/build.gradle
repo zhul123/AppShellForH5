@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.application'
+}
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        applicationId "com.capinfo.fysystem"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode change.code
+        versionName change.name
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            //设置 .so文件保存在libs/armeabi对应的硬件设备文件夹中
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs/eventbus.jar')
+    implementation files('libs/tbs_sdk_thirdapp_v4.3.0.67_43967_sharewithdownloadwithfile_withoutGame_obfs_20200923_120452.jar')
+    implementation libraries.appcompat
+    implementation libraries.material
+    implementation libraries.constraintlayout
+    implementation libraries.smartRefreshLayout
+
+    annotationProcessor libraries.alibabaARouterCompiler
+    api libraries.alibabaARouter
+//    implementation project(":lib-okpermission")
+}

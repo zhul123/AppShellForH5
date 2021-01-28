@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:animateLayoutChanges="true"
+        android:background="@color/white">
+
+
+        <ImageView
+            android:id="@+id/system_title_left"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/title_height"
+            android:paddingStart="@dimen/title_padding_left"
+            android:paddingLeft="@dimen/title_padding_left"
+            android:paddingEnd="7dip"
+            android:paddingRight="7dip"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:scaleType="centerInside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/btn_navbar_back" />
+
+        <ImageView
+            android:id="@+id/system_title_left2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/title_height"
+            android:layout_centerVertical="true"
+            android:paddingStart="8dip"
+            android:paddingLeft="8dip"
+            android:paddingEnd="@dimen/title_padding_left"
+            android:paddingRight="@dimen/title_padding_left"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:scaleType="center"
+            android:visibility="gone"
+            app:layout_constraintLeft_toRightOf="@+id/system_title_left"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/web_page_close" />
+        <!--这是一个占位View，目的就是让标题居中且，长度自适应-->
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="0dip"
+            android:ellipsize="end"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/black_dark"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="108财神节" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/system_title_right"
+            style="@style/textFont.title_sec_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|center_vertical"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxEms="8"
+            android:maxLines="1"
+            android:paddingStart="15dip"
+            android:paddingLeft="15dip"
+            android:paddingEnd="@dimen/title_padding_right"
+            android:paddingRight="@dimen/title_padding_right"
+            android:textColor="@color/primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="占位来一个" />
+        <!--@dimen/title_padding_right-->
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/system_title_right_image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingStart="15dip"
+            android:paddingLeft="15dip"
+            android:paddingEnd="@dimen/title_padding_right"
+            android:paddingRight="@dimen/title_padding_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/bottom_span_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/span_line_color"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    <include
+        android:id="@+id/no_network_prompt"
+        layout="@layout/no_net_work_title_layout" />
+</LinearLayout>
