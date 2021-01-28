@@ -57,6 +57,7 @@ public class StartUpUtils {
      * 初始化腾讯X5浏览器
      */
     private void initTx5WebView() {
+        //非wifi情况下，主动下载x5内核
         QbSdk.setDownloadWithoutWifi(true);
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 
