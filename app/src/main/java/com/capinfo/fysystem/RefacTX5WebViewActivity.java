@@ -59,11 +59,15 @@ import androidx.core.widget.PopupWindowCompat;
 public class RefacTX5WebViewActivity extends BaseRefacTX5WebViewActivity implements AdapterView.OnItemClickListener {
 
     private static final String TAG = RefacTX5WebViewActivity.class.getSimpleName();
+    private final String REVISEPSD = "修改密码";
     private final String LOGOUTSTR = "退出登录";
     private final String CLEAR = "清除缓存";
+    public static final String URL_JSON_KEY_REVISEPSD = "revise_psd";
 
     private CommonDialog mCommonDialog;
     private PopWinForList mPopWin;
+    @Autowired(name=URL_JSON_KEY_REVISEPSD,desc = "修改密码地址")
+    protected String revise_psd = "";
     private List<String> moreDatas = new ArrayList<>();
 
     @Override
@@ -72,6 +76,7 @@ public class RefacTX5WebViewActivity extends BaseRefacTX5WebViewActivity impleme
         //闪烁避免
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         initDialog();
+        moreDatas.add(REVISEPSD);
         moreDatas.add(LOGOUTSTR);
         moreDatas.add(CLEAR);
         if (showTitle) {
@@ -93,16 +98,19 @@ public class RefacTX5WebViewActivity extends BaseRefacTX5WebViewActivity impleme
             return;
         //防止多次点击
         if (!DoubleUtils.isFastDoubleClick() && isNetworkAvailable()) {
-            if (MORE.equals(systemTitle.getRightText())) {
+            String rightStr = systemTitle.getRightText();
+            if (MORE.equals(rightStr)) {
                 if (mPopWin == null) {
                     mPopWin = new PopWinForList(this);
                     mPopWin.setDatas(moreDatas);
                     mPopWin.setOnItemClick(this);
                 }
                 mPopWin.showPop(view);
-            } else if (HOME.equals(systemTitle.getRightText())) {
+            } else if (HOME.equals(rightStr)) {
                 loadUrl(TextUtils.isEmpty(homeUrl) ? targetUrl : homeUrl);
                 isHome = true;
+            } else if (REVISEPSD.equals(rightStr)) {
+                loadUrl(revise_psd);
             }
         }
     }
@@ -113,6 +121,9 @@ public class RefacTX5WebViewActivity extends BaseRefacTX5WebViewActivity impleme
             public void onClick(View v) {
                 AppSharedPreferencesHelper.setToken("");
                 if (!TextUtils.isEmpty(loginUrl)) {
+                    WebViewUtils.clearTbsX5Cookie(RefacTX5WebViewActivity.this);
+                    String setTokenJS = "javascript:localStorage.clear()";
+                    mWebView.evaluateJavascript(setTokenJS, null);
                     loadUrl(loginUrl);
                 } else {
                     smartrefreshlayout.autoRefresh();
@@ -136,10 +147,14 @@ public class RefacTX5WebViewActivity extends BaseRefacTX5WebViewActivity impleme
                 }
                 break;
             case CLEAR:
-                    if(mWebView != null){
-                        WebViewUtils.clearTbsX5Cookie(this);
-                        ToastUtil.getInstance().makeText("清除成功");
-                    }
+                if (mWebView != null) {
+                    WebViewUtils.clearTbsX5Cookie(this);
+                    ToastUtil.getInstance().makeText("清除成功");
+                    mWebView.reload();
+                }
+                break;
+            case REVISEPSD:
+                loadUrl(revise_psd);
                 break;
             default:
                 break;

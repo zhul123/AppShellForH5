@@ -68,7 +68,6 @@ import androidx.core.content.ContextCompat;
  * &intent_name_webview_common_parameter=true
  * <p>
  * 具体表述请查看
- * {@link #intentUrl}
  * <p>
  * 例子：这里只传入urlString这个参数就可以其他参数都是默认的，由于该页面使用了继承方式，所以需要手动解析参数传入ARouter框架
  * <p>
@@ -87,6 +86,7 @@ import androidx.core.content.ContextCompat;
 public class BaseRefacTX5WebViewActivity extends BaseActivity {
     private final ExitingTrigger exitingTrigger = new ExitingTrigger();
     public static final String PROTOCOL_KEY_URL = "urlString";
+    public static final String TOKENNAME = "yqfk__Access-Token";
     public static final String LOGOUT = "登出";
     public static final String MORE = "更多";
     public static final String HOME = "首页";
@@ -129,8 +129,6 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
 
     private boolean needClearHistory;
 
-    @Autowired(name = PROTOCOL_KEY_URL, desc = "WebView加载的Url")
-    protected String intentUrl;
     @Autowired(name = URL_JSON_KEY_HOME, desc = "Home页地址")
     protected String homeUrl;
     @Autowired(name = URL_JSON_KEY_LOGIN, desc = "login页地址")
@@ -202,11 +200,16 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
     }
 
     protected String mergeTargetUrl() {
-
-        //webview url路径
-        intentUrl = TextUtils.isEmpty(getIntent().getStringExtra(PROTOCOL_KEY_URL)) ?
-                intentUrl : getIntent().getStringExtra(PROTOCOL_KEY_URL);
-        targetUrl = intentUrl;
+        String token = AppSharedPreferencesHelper.getToken();
+        if(!TextUtils.isEmpty(token)) {
+            /*if(mWebView != null){
+                String setTokenJS = "javascript:localStorage.setItem('"+TOKENNAME+"','"+token+"')";
+                mWebView.evaluateJavascript(setTokenJS,null);
+            }*/
+            targetUrl = homeUrl;
+        }else{
+            targetUrl = loginUrl;
+        }
         return targetUrl;
     }
 
@@ -331,7 +334,10 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (mWebView.canGoBack()) {
+        if (mWebView.canGoBack() &&
+                !(homeUrl != null && homeUrl.equals(mWebView.getUrl()))
+        ) {
+            print("bakc:"+mWebView.getUrl());
             webViewBack();
         } else {
             if (exitingTrigger.testExpired(System.currentTimeMillis())) {

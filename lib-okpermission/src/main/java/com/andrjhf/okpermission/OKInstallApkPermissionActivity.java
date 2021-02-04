@@ -25,7 +25,6 @@ import androidx.annotation.Nullable;
 import static com.andrjhf.okpermission.OKPermission.REQUEST_CODE_PERMISSION;
 
 /**
- * Created by jiahongfei on 2018/1/12.
  * Android 8.0 安装未知应用
  */
 

@@ -65,7 +65,7 @@ abstract public class BaseActivity extends FragmentActivity {
         EventBus.getDefault().register(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            StatusBarUtil.setStatusBarColor(this, R.color.white);
+            StatusBarUtil.setStatusBarColor(this, R.color.transparent);
             StatusBarUtil.StatusBarLightMode(this);
         }
         baseApplication = (BaseApplication) getApplication();

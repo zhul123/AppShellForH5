@@ -82,6 +82,7 @@ public class OKPermissionActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         statusBarUtil();
 
         mContext = this;
@@ -93,11 +94,10 @@ public class OKPermissionActivity extends Activity {
 
     private void statusBarUtil() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            StatusBarUtil.setStatusBarColor(this, android.R.color.white);
+            StatusBarUtil.setStatusBarColor(this, android.R.color.transparent);
             StatusBarUtil.StatusBarLightMode(this);
         }
     }
-
     private void getIntentData(Bundle savedInstanceState) {
         Bundle bundle = savedInstanceState;
         if(null == bundle){

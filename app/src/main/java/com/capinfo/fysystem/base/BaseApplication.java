@@ -14,6 +14,7 @@ import com.capinfo.fysystem.event.NetWorkChangedEvent;
 import com.capinfo.fysystem.utils.EventBusUtils;
 import com.capinfo.fysystem.utils.Logger;
 import com.capinfo.fysystem.utils.StartUpUtils;
+import com.tencent.bugly.Bugly;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.sdk.QbSdk;
 
@@ -25,12 +26,13 @@ public class BaseApplication extends Application {
 
     @Override
     public void onCreate() {
+        System.out.println("==========app");
         super.onCreate();
         ARouter.init(this);
         registerNetworkState();
         StartUpUtils.get().initSDK();
+        Bugly.init(getApplicationContext(), BuildConfig.BUGLY_APP_ID, BuildConfig.DEBUG);
         mInstance = this;
-        CrashReport.initCrashReport(getApplicationContext(),BuildConfig.BUGLY_APP_ID,isDebugBuild());
     }
 
     public static BaseApplication getInstance() {

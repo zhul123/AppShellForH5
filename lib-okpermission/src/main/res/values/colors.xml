@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="okpermission_primary">#ff6600</color>
+    <color name="okpermission_primary">#3296f9</color>
+    <color name="okpermission_transparent">#00000000</color>
+    <color name="okpermission_white">#ffffff</color>
     <color name="okpermission_divider">#dddddd</color>
     <color name="okpermission_button_background">#4dc060</color>
     <color name="okpermission_title_text_color">#333333</color>

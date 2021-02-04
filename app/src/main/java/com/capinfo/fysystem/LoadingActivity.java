@@ -6,6 +6,9 @@ import android.text.TextUtils;
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.andrjhf.okpermission.OKPermissionListener;
+import com.andrjhf.okpermission.OKPermissionManager;
+import com.andrjhf.okpermission.PermissionItem;
 import com.capinfo.fysystem.base.BaseActivity;
 import com.capinfo.fysystem.utils.sp.AppSharedPreferencesHelper;
 
@@ -13,35 +16,34 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class LoadingActivity extends BaseActivity {
-//    public static final PermissionItem[] PERMISSION_ALL = new PermissionItem[]{
-//            new PermissionItem(android.Manifest.permission.READ_EXTERNAL_STORAGE, R.string.comp_pedometer_launcher_tips_permission_storage, R.drawable.comp_pedometer_launcher_ic_launcher),
-//            new PermissionItem(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, R.string.comp_pedometer_launcher_tips_permission_storage, R.drawable.comp_pedometer_launcher_ic_launcher)
-//    };
+    public static final PermissionItem[] PERMISSION_ALL = new PermissionItem[]{
+            new PermissionItem(android.Manifest.permission.READ_EXTERNAL_STORAGE, R.string.comp_pedometer_launcher_tips_permission_storage, R.drawable.comp_pedometer_launcher_ic_launcher),
+            new PermissionItem(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, R.string.comp_pedometer_launcher_tips_permission_storage, R.drawable.comp_pedometer_launcher_ic_launcher)
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        goNext();
-        /*if(permission()){
+        if(permission()){
             goNext();
-        }*/
+        }
     }
 
     private void goNext(){
-//        String url = "http://219.232.207.218:9100/approval?appType=cap&code=DZ67Rg&username=%22%E6%9C%B1%E7%A3%8A%22";
-        String url = "http://192.168.1.158:3000/";
-        String urlHome = "http://219.232.207.218:9100/approval?appType=cap&code=DZ67Rg&username=%22%E6%9C%B1%E7%A3%8A%22";
-        String urlLogin = "http://219.232.207.218:9100/approval?appType=cap&code=DZ67Rg&username=%22%E6%9C%B1%E7%A3%8A%22";
-//        String url = "https://hr.capinfo.com.cn/templates/index/hcmlogon.jsp";
+        String url = "http://yqfk.bgosp.com/app";
+        String urlRevisePwd = "http://yqfk.bgosp.com/app/#/main/revisePwd";
+//        String urlRevisePwd = "http://www.baidu.com";
+        String urlHome = "http://yqfk.bgosp.com/app/#/main/homeUserMsg";
+        String urlLogin = "http://yqfk.bgosp.com/app";
         String title = "防疫系统";
         if(!TextUtils.isEmpty(AppSharedPreferencesHelper.getToken())){
             url = urlHome;
         }
         ARouter.getInstance().build("/comm/commonWebview")
-                .withString(RefacTX5WebViewActivity.PROTOCOL_KEY_URL,url)
                 .withString(RefacTX5WebViewActivity.URL_JSON_KEY_HOME,urlHome)
                 .withString(RefacTX5WebViewActivity.URL_JSON_KEY_LOGIN,urlLogin)
                 .withString(RefacTX5WebViewActivity.URL_JSON_KEY_TITLE,title)
+                .withString(RefacTX5WebViewActivity.URL_JSON_KEY_REVISEPSD,urlRevisePwd)
                 .navigation(this, new NavCallback() {
                     @Override
                     public void onArrival(Postcard postcard) {
@@ -55,7 +57,7 @@ public class LoadingActivity extends BaseActivity {
         return 0;
     }
 
-    /*private boolean permission() {
+    private boolean permission() {
         return OKPermissionManager.applyPermissionNoDialog(this, false, PERMISSION_ALL, new OKPermissionListener() {
 
             @Override
@@ -71,5 +73,5 @@ public class LoadingActivity extends BaseActivity {
             public void onAppSettingsSuccess() {
             }
         });
-    }*/
+    }
 }

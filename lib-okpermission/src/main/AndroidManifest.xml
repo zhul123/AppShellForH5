@@ -8,7 +8,7 @@
     <application>
         <activity android:name="com.andrjhf.okpermission.OKPermissionActivity"
             android:launchMode="singleTop"
-            android:theme="@style/okpermission_TranslucentActivity">
+            android:theme="@style/okpermission_loading">
 
         </activity>
         <activity android:name=".OKInstallApkPermissionActivity"

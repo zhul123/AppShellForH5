@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- dialog title style-->
     <style name="okpermission_common_dialog_title_style">
         <item name="android:layout_width">match_parent</item>
@@ -13,5 +13,18 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#686868</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="okpermission_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/okpermission_primary</item>
+        <item name="colorPrimaryDark">@color/okpermission_white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/okpermission_transparent</item>
+    </style>
+
+    <style name="okpermission_loading" parent="okpermission_AppTheme">
+        <item name="android:background">@mipmap/splash_bg</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item><!-- 沉浸式状态栏，只能在api19 4.4以上机型生效 -->
     </style>
 </resources>

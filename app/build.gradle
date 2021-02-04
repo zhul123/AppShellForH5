@@ -66,10 +66,10 @@ dependencies {
     implementation libraries.material
     implementation libraries.constraintlayout
     implementation libraries.smartRefreshLayout
-    implementation libraries.bugly_crashreport
+    implementation libraries.crashreport_upgrade
     implementation libraries.bugly_nativecrashreport
 
     annotationProcessor libraries.alibabaARouterCompiler
     api libraries.alibabaARouter
-//    implementation project(":lib-okpermission")
+    implementation project(":lib-okpermission")
 }

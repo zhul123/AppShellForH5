@@ -27,6 +27,7 @@ ext.versions = [
         smartRefresh            : "1.1.2",
         bugly_crashreport       : "latest.release",
         bugly_nativecrashreport : "latest.release",
+        crashreport_upgrade : "latest.release",
 ]
 
 ext.gradlePlugins = [
@@ -47,7 +48,8 @@ ext.libraries = [
         systembartint           : "com.readystatesoftware.systembartint:systembartint:$versions.systembartint",
         recyclerview            : "androidx.recyclerview:recyclerview:$versions.recyclerview",
         smartRefreshLayout      : "com.scwang.smartrefresh:SmartRefreshLayout:$versions.smartRefresh",
-        bugly_crashreport       : "com.tencent.bugly:crashreport:$versions.bugly_crashreport",
+        crashreport_upgrade       : "com.tencent.bugly:crashreport_upgrade:$versions.crashreport_upgrade",
+
         bugly_nativecrashreport : "com.tencent.bugly:nativecrashreport:$versions.bugly_nativecrashreport",
 ]
 
