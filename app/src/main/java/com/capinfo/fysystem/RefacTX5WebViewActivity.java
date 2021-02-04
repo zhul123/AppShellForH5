@@ -119,10 +119,11 @@ public class RefacTX5WebViewActivity extends BaseRefacTX5WebViewActivity impleme
         mCommonDialog = new CommonDialog(this, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppSharedPreferencesHelper.setToken("");
                 if (!TextUtils.isEmpty(loginUrl)) {
                     WebViewUtils.clearTbsX5Cookie(RefacTX5WebViewActivity.this);
                     String setTokenJS = "javascript:localStorage.clear()";
+                    AppSharedPreferencesHelper.setToken(null);
+                    AppSharedPreferencesHelper.setResult(null);
                     mWebView.evaluateJavascript(setTokenJS, null);
                     loadUrl(loginUrl);
                 } else {
@@ -150,6 +151,8 @@ public class RefacTX5WebViewActivity extends BaseRefacTX5WebViewActivity impleme
                 if (mWebView != null) {
                     WebViewUtils.clearTbsX5Cookie(this);
                     ToastUtil.getInstance().makeText("清除成功");
+                    AppSharedPreferencesHelper.setToken(null);
+                    AppSharedPreferencesHelper.setResult(null);
                     mWebView.reload();
                 }
                 break;

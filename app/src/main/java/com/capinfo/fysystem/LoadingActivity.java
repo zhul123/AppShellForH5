@@ -30,15 +30,11 @@ public class LoadingActivity extends BaseActivity {
     }
 
     private void goNext(){
-        String url = "http://yqfk.bgosp.com/app";
         String urlRevisePwd = "http://yqfk.bgosp.com/app/#/main/revisePwd";
-//        String urlRevisePwd = "http://www.baidu.com";
         String urlHome = "http://yqfk.bgosp.com/app/#/main/homeUserMsg";
-        String urlLogin = "http://yqfk.bgosp.com/app";
-        String title = "防疫系统";
-        if(!TextUtils.isEmpty(AppSharedPreferencesHelper.getToken())){
-            url = urlHome;
-        }
+        String urlLogin = "http://yqfk.bgosp.com/app/#/";
+        String title = "疫情防疫";
+
         ARouter.getInstance().build("/comm/commonWebview")
                 .withString(RefacTX5WebViewActivity.URL_JSON_KEY_HOME,urlHome)
                 .withString(RefacTX5WebViewActivity.URL_JSON_KEY_LOGIN,urlLogin)

@@ -37,6 +37,7 @@ import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.SslError;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebView;
@@ -87,6 +88,7 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
     private final ExitingTrigger exitingTrigger = new ExitingTrigger();
     public static final String PROTOCOL_KEY_URL = "urlString";
     public static final String TOKENNAME = "yqfk__Access-Token";
+    public static final String RESULTNAME = "yqfk__result";
     public static final String LOGOUT = "登出";
     public static final String MORE = "更多";
     public static final String HOME = "首页";
@@ -132,7 +134,7 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
     @Autowired(name = URL_JSON_KEY_HOME, desc = "Home页地址")
     protected String homeUrl;
     @Autowired(name = URL_JSON_KEY_LOGIN, desc = "login页地址")
-    protected String loginUrl;
+    protected String loginUrl = "";
     @Autowired(name = URL_JSON_KEY_TITLE, desc = "默认标题")
     protected String titleContent;
     protected boolean showTitle;
@@ -201,15 +203,14 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
 
     protected String mergeTargetUrl() {
         String token = AppSharedPreferencesHelper.getToken();
-        if(!TextUtils.isEmpty(token)) {
-            /*if(mWebView != null){
-                String setTokenJS = "javascript:localStorage.setItem('"+TOKENNAME+"','"+token+"')";
-                mWebView.evaluateJavascript(setTokenJS,null);
-            }*/
+        String result = AppSharedPreferencesHelper.getResult();
+        if(!TextUtils.isEmpty(token) && !TextUtils.isEmpty(result)) {
             targetUrl = homeUrl;
         }else{
             targetUrl = loginUrl;
         }
+
+        print("loadUrl:"+targetUrl);
         return targetUrl;
     }
 
@@ -272,11 +273,6 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
             showContent(true);
 
             if (!TextUtils.isEmpty(url)) {
-                String token = AppSharedPreferencesHelper.getToken();
-                if(!TextUtils.isEmpty(token)){
-                    String js = String.format("javascript:setToken('%s')",token);
-                    mWebView.evaluateJavascript(js,null);
-                }
                 Logger.i("webView load url: " + url);
                 runOnUiThread(new Runnable() {
                     @Override
@@ -399,7 +395,6 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
 
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
-            print(newProgress+"");
             if(newProgress > 10) {
                 mProgress.setProgress(newProgress);
             }
@@ -407,6 +402,10 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
     }
 
     private final WebViewClient webViewClient = new WebViewClient() {
+        @Override
+        public WebResourceResponse shouldInterceptRequest(WebView webView, WebResourceRequest webResourceRequest) {
+            return super.shouldInterceptRequest(webView, webResourceRequest);
+        }
 
         public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
             super.onReceivedSslError(view, handler, error);
@@ -420,6 +419,7 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView webView, WebResourceRequest webResourceRequest) {
             print("shouldOverrideUrl: " + webView.getUrl());
+
             return super.shouldOverrideUrlLoading(webView, webResourceRequest);
         }
 
@@ -431,14 +431,19 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            print("onPageStarted");
             mProgress.setVisibility(View.VISIBLE);
             mProgress.setProgress(10);
+            String token = AppSharedPreferencesHelper.getToken();
+            String result = AppSharedPreferencesHelper.getResult();
+            if(!TextUtils.isEmpty(token) && !TextUtils.isEmpty(result)) {
+                String setTokenJS = String.format("javascript:localStorage.setItem('%s',%s);localStorage.setItem('%s',%s)", TOKENNAME, token, RESULTNAME, result);
+                mWebView.loadUrl(setTokenJS);
+            }
         }
 
         @Override
         public void onPageFinished(WebView view, String url) {
-            print("finish");
+            print("onPageFinished:"+url);
             if(animation == null){
                 initAnimation();
             }
@@ -446,6 +451,26 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
                 mProgress.startAnimation(animation);
                 mProgress.setVisibility(View.GONE);
             }
+            String jsToken = String.format("localStorage.getItem('%s')",TOKENNAME);
+            mWebView.evaluateJavascript(jsToken, new ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String s) {
+                    print("jsToken:"+s);
+                    if(!TextUtils.isEmpty(s) && !"null".equals(s.toLowerCase())){
+                        AppSharedPreferencesHelper.setToken(s);
+                    }
+                }
+            });
+            String jsResult = String.format("localStorage.getItem('%s')",RESULTNAME);
+            mWebView.evaluateJavascript(jsResult, new ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String s) {
+                    print("jsResult:"+s);
+                    if(!TextUtils.isEmpty(s) && !"null".equals(s.toLowerCase())){
+                        AppSharedPreferencesHelper.setResult(s);
+                    }
+                }
+            });
         }
 
         @Override

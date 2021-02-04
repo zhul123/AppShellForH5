@@ -432,7 +432,7 @@ abstract public class BaseActivity extends FragmentActivity {
     }
 
     public void print(String str){
-        if(BuildConfig.DEBUG){
+        if(true){
             System.out.println("=========print:"+str);
         }
     }

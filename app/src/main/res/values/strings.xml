@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">防疫系统</string>
+    <string name="app_name">疫情防控</string>
     <string name="title_back">返回</string>
     <string name="response_error">重新加载</string>
     <string name="label_explain">重新加载</string>
