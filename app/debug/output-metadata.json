@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.capinfo.fysystemts",
-  "variantName": "processReleaseResources",
+  "applicationId": "com.capinfo.fysystemts.debug",
+  "variantName": "processDebugResources",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "versionCode": 103,
       "versionName": "1.0.1",
-      "outputFile": "app-release.apk"
+      "outputFile": "app-debug.apk"
     }
   ]
 }

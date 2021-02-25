@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.webkit.WebStorage;
 
+import com.capinfo.fysystem.BuildConfig;
 import com.capinfo.fysystem.utils.ScreenUtils;
 import com.capinfo.fysystem.utils.ToolUtils;
 import com.capinfo.fysystem.utils.Utils;
@@ -47,6 +48,7 @@ public class WebViewUtils {
         setting.setLoadWithOverviewMode(true);
         setting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         setting.setPluginState(WebSettings.PluginState.ON);
+        WebView.setWebContentsDebuggingEnabled(BuildConfig.DEBUG);
         //打开本地缓存
         setting.setAppCacheEnabled(true);
         setting.setDomStorageEnabled(true);

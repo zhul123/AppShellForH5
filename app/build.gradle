@@ -6,7 +6,7 @@ android {
     buildToolsVersion versions.buildTools
 
     defaultConfig {
-        applicationId "com.capinfo.fysystem"
+        applicationId versions.applicationIdTs
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         versionCode change.code
@@ -44,11 +44,14 @@ android {
             minifyEnabled false
             buildConfigField "String", "BUGLY_APP_ID", '"171f1bb586"'
             resValue "string", "bugly_app_id", "171f1bb586"
+            resValue "string", "appName", "防疫系统"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug{
+            applicationIdSuffix ".debug"
             buildConfigField "String", "BUGLY_APP_ID", '"171f1bb586"'
             resValue "string", "bugly_app_id", "171f1bb586"
+            resValue "string", "appName", "防系统测试"
         }
     }
     compileOptions {

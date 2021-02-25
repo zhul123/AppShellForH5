@@ -6,10 +6,11 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
         android:animateLayoutChanges="true"
+        android:orientation="horizontal"
         android:background="@color/white">
 
 
@@ -24,8 +25,6 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:scaleType="centerInside"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/btn_navbar_back" />
 
         <ImageView
@@ -41,31 +40,26 @@
             android:paddingBottom="8dp"
             android:scaleType="center"
             android:visibility="gone"
-            app:layout_constraintLeft_toRightOf="@+id/system_title_left"
+            app:layout_constraintLeft_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/web_page_close" />
         <!--这是一个占位View，目的就是让标题居中且，长度自适应-->
 
+
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="0dip"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:ellipsize="end"
             android:focusableInTouchMode="true"
-            android:gravity="center"
+            android:gravity="left|center_vertical"
             android:singleLine="true"
             android:textColor="@color/black_dark"
             android:textSize="@dimen/title_text_size"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             tools:text="108财神节" />
-
         <TextView
-            android:visibility="gone"
             android:id="@+id/system_title_right"
             style="@style/textFont.title_sec_text"
             android:layout_width="wrap_content"
@@ -75,29 +69,29 @@
             android:gravity="center"
             android:maxEms="8"
             android:maxLines="1"
-            android:paddingStart="15dip"
-            android:paddingLeft="15dip"
-            android:paddingEnd="@dimen/title_padding_right"
-            android:paddingRight="@dimen/title_padding_right"
+            tools:drawableRight="@mipmap/icon_new"
             android:textColor="@color/primary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="visible"
             tools:text="占位来一个" />
         <!--@dimen/title_padding_right-->
         <ImageView
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/system_title_right_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingStart="15dip"
             android:paddingLeft="15dip"
             android:paddingEnd="@dimen/title_padding_right"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            tools:src="@drawable/icon_home"
             android:paddingRight="@dimen/title_padding_right"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
 
     <View
         android:id="@+id/bottom_span_line"

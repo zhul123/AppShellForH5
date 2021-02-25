@@ -60,12 +60,24 @@ public class JavascriptInterface {
 
     @android.webkit.JavascriptInterface
     public void setToken(String token) {
+        System.out.println("======setTOkennnn");
         AppSharedPreferencesHelper.setToken(token);
     }
 
     @android.webkit.JavascriptInterface
     public String getToken() {
         return AppSharedPreferencesHelper.getToken();
+    }
+
+    @android.webkit.JavascriptInterface
+    public void setResult(String result) {
+        System.out.println("======setResultsetResult");
+        AppSharedPreferencesHelper.setResult(result);
+    }
+
+    @android.webkit.JavascriptInterface
+    public String getResult() {
+        return AppSharedPreferencesHelper.getResult();
     }
 
 }

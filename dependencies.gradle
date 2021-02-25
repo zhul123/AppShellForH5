@@ -1,7 +1,7 @@
 ext.change = [
 
-        code: 100,
-        name: '1.0.0'
+        code: 103,
+        name: '1.0.1'
 ]
 
 ext.versions = [
@@ -13,6 +13,7 @@ ext.versions = [
         buildTools              : '30.0.2',
 
         applicationId           : "com.capinfo.fysystem",
+        applicationIdTs           : "com.capinfo.fysystemts",
 
         androidGradlePlugin     : '4.1.1',
         alibabaARouter          : '1.5.1',

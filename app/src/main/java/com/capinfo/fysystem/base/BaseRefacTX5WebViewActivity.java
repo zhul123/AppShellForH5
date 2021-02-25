@@ -141,7 +141,6 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
     protected String titleRight;
     protected WebSystemTitle systemTitle;
 
-
     private Map<String, String> mHeader = new HashMap<>();
     private long mLastTime = System.currentTimeMillis();
     private ImageView mScreenshotImageView;
@@ -233,7 +232,7 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
             //自定义标题内容
             titleContent = getIntent().getStringExtra(URL_JSON_KEY_TITLE);
             //自定义标题右边按钮文字
-            titleRight = getIntent().getStringExtra(URL_JSON_KEY_TITLE_RIGHT);
+//            titleRight = getIntent().getStringExtra(URL_JSON_KEY_TITLE_RIGHT);
             systemTitle = findViewById(R.id.system_title);
             setTitle(titleContent);
 
@@ -268,7 +267,7 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
     }
 
     protected void loadUrl(final String url) {
-
+//        mWebView.loadUrl("file:///android_asset/html.html");
         if (isNetworkAvailable()) {
             showContent(true);
 
@@ -380,10 +379,8 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
             if(isHome || isLogout){
                 mTitleArray.clear();
                 mUrlArray.clear();
-                if(!x5IsLoad) {
-                    mTitleArray.addFirst(titleContent);
-                    mUrlArray.addFirst(targetUrl);
-                }
+                mTitleArray.addFirst(titleContent);
+                mUrlArray.addFirst(targetUrl);
                 mWebView.clearHistory();
                 isHome = false;
                 isLogout = false;
@@ -459,6 +456,9 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
                     if(!TextUtils.isEmpty(s) && !"null".equals(s.toLowerCase())){
                         AppSharedPreferencesHelper.setToken(s);
                     }
+//                    if((TextUtils.isEmpty(s) || "null".equals(s.toLowerCase())) && loginUrl.equals(url)){
+//                        AppSharedPreferencesHelper.setToken(null);
+//                    }
                 }
             });
             String jsResult = String.format("localStorage.getItem('%s')",RESULTNAME);
@@ -469,6 +469,9 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
                     if(!TextUtils.isEmpty(s) && !"null".equals(s.toLowerCase())){
                         AppSharedPreferencesHelper.setResult(s);
                     }
+//                    if((TextUtils.isEmpty(s) || "null".equals(s.toLowerCase())) && loginUrl.equals(url)){
+//                        AppSharedPreferencesHelper.setResult(null);
+//                    }
                 }
             });
         }
@@ -565,10 +568,11 @@ public class BaseRefacTX5WebViewActivity extends BaseActivity {
             systemTitle.setLeftBackBtnVisible(leftVisible);
             systemTitle.setRightTextBtnVisible(true);
             if(!leftVisible){
-                systemTitle.setRightText(MORE);
+//                systemTitle.setRightText(MORE);
+                systemTitle.setRightImage(R.drawable.icon_more,MORE);
             }else{
-                systemTitle.setRightText(HOME);
-//                systemTitle.setRightTextBtnVisible(false);
+//                systemTitle.setRightText(HOME);
+                systemTitle.setRightImage(R.drawable.icon_home,HOME);
             }
         }
         if(smartrefreshlayout != null){

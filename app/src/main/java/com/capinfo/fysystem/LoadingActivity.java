@@ -30,9 +30,11 @@ public class LoadingActivity extends BaseActivity {
     }
 
     private void goNext(){
-        String urlRevisePwd = "http://yqfk.bgosp.com/app/#/main/revisePwd";
-        String urlHome = "http://yqfk.bgosp.com/app/#/main/homeUserMsg";
-        String urlLogin = "http://yqfk.bgosp.com/app/#/";
+        String baseUrl = "https://tsyqfk.bgosp.com/app/";//TEST
+//        String baseUrl = "http://yqfk.bgosp.com/app/";//RELEASE
+        String urlRevisePwd = baseUrl + "#/main/revisePwd";
+        String urlHome = baseUrl + "#/main/homeUserMsg";
+        String urlLogin = baseUrl + "#/";
         String title = "疫情防疫";
 
         ARouter.getInstance().build("/comm/commonWebview")

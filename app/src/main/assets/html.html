@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src='./browser.js'></script>
+<script>
+var u = navigator.userAgent, app = navigator.appVersion;
+alert("start");
+var token = window.android.getToken()
+alert("Token:"+token);
+var isAndroid = u.indexOf('Capinfo') > -1; //android终端或者uc浏览器
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+alert('是否是Android：'+isAndroid);
+alert('是否是iOS：'+isiOS);
+    alert(window.isApp);
+    window.android.setToken("");
+    window.android.setResult("");
+</script>
+<body>
+    
+</body>
+</html>

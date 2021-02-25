@@ -16,6 +16,8 @@ import java.util.List;
 public class PopWinForList extends PopWindowMenu implements PopWindowMenu.OnLayoutCompletedListener {
     private ListView mListView;
     private Context mContext;
+    private PopAdapter mPopAdapter;
+
 
     public PopWinForList(Context context) {
         super(context, R.layout.common_pop_list);
@@ -29,8 +31,16 @@ public class PopWinForList extends PopWindowMenu implements PopWindowMenu.OnLayo
     }
 
     public void setDatas(List<String> datas) {
+        mPopAdapter = new PopAdapter(datas, mContext);
         if(mListView != null) {
-            mListView.setAdapter(new PopAdapter(datas, mContext));
+            mListView.setAdapter(mPopAdapter);
+        }
+    }
+
+    public void refresh(){
+        if(mPopAdapter != null){
+            System.out.println("=========notifyDataSetChanged");
+            mPopAdapter.notifyDataSetChanged();
         }
     }
 

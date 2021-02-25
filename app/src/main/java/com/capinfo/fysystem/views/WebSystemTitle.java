@@ -168,6 +168,11 @@ public class WebSystemTitle extends LinearLayout {
             righTv.setTextColor(colorRes);
         }
     }
+    public void setRightTextDrawable(int left,int top,int right,int bottom) {
+        if (righTv != null) {
+            righTv.setCompoundDrawablesWithIntrinsicBounds(left,top,right,bottom);
+        }
+    }
 
     public void setRightTextSize(float size) {
         if (righTv != null) {
@@ -219,15 +224,25 @@ public class WebSystemTitle extends LinearLayout {
 
     public void setRightImage(@DrawableRes int drawableResId, OnClickListener click) {
         if (rightImage != null) {
-            if (righTv != null) {
-                righTv.setVisibility(View.GONE);
-            }
             rightImage.setVisibility(View.VISIBLE);
             rightImage.setImageResource(drawableResId);
             rightImage.setOnClickListener(click);
             setTitle(getTitle().toString());
             rightImage.requestLayout();
         }
+    }
+    public void setRightImage(@DrawableRes int drawableResId,String tag) {
+        if (rightImage != null) {
+            rightImage.setVisibility(View.VISIBLE);
+            rightImage.setImageResource(drawableResId);
+            rightImage.setTag(tag);
+            setTitle(getTitle().toString());
+            rightImage.requestLayout();
+        }
+    }
+
+    public void setRightImageLsn(OnClickListener click) {
+        rightImage.setOnClickListener(click);
     }
 
     private boolean mShowPrompt = true;

@@ -18,6 +18,9 @@ import com.capinfo.fysystem.utils.webview.WebViewUtils;
 import com.capinfo.fysystem.views.dialog.CommonDialog;
 import com.capinfo.fysystem.views.popwindows.PopWinForList;
 import com.capinfo.fysystem.views.popwindows.PopWindowMenu;
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.beta.Beta;
+import com.tencent.bugly.beta.UpgradeInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +65,7 @@ public class RefacTX5WebViewActivity extends BaseRefacTX5WebViewActivity impleme
     private final String REVISEPSD = "修改密码";
     private final String LOGOUTSTR = "退出登录";
     private final String CLEAR = "清除缓存";
+    private final String UPLOAD = "版本更新";
     public static final String URL_JSON_KEY_REVISEPSD = "revise_psd";
 
     private CommonDialog mCommonDialog;
@@ -77,39 +81,78 @@ public class RefacTX5WebViewActivity extends BaseRefacTX5WebViewActivity impleme
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         initDialog();
         moreDatas.add(REVISEPSD);
-        moreDatas.add(LOGOUTSTR);
+        moreDatas.add(UPLOAD);
         moreDatas.add(CLEAR);
+        moreDatas.add(LOGOUTSTR);
         if (showTitle) {
-            titleRight = MORE;
+            titleRight = "V"+BuildConfig.VERSION_NAME;
             //右侧文字的设置
             if (!TextUtils.isEmpty(titleRight)) {
                 systemTitle.setRightTextBtn(titleRight, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        setRightOnClick(v);
+                        Beta.checkUpgrade();
                     }
                 });
             }
+            systemTitle.setRightImageLsn(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String tag = (String) v.getTag();
+                    setRightOnClick(v,tag);
+
+                }
+            });
+
         }
     }
 
-    public void setRightOnClick(View view) {
+    @Override
+    protected void onResume() {
+        if(mWebView != null){
+            mWebView.post(mRunnable);
+        }
+        super.onResume();
+    }
+
+    Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            UpgradeInfo upgradeInfo = Beta.getAppUpgradeInfo();
+            if(upgradeInfo != null && BuildConfig.VERSION_CODE < upgradeInfo.versionCode){
+                if(systemTitle != null){
+                    systemTitle.setRightTextDrawable(0,0,R.mipmap.icon_new,0);
+                }
+            }
+        }
+    };
+    public void setRightOnClick(View view,String tag) {
         if (!isLive())
             return;
         //防止多次点击
         if (!DoubleUtils.isFastDoubleClick() && isNetworkAvailable()) {
-            String rightStr = systemTitle.getRightText();
-            if (MORE.equals(rightStr)) {
-                if (mPopWin == null) {
-                    mPopWin = new PopWinForList(this);
-                    mPopWin.setDatas(moreDatas);
-                    mPopWin.setOnItemClick(this);
+            print(mWebView.getUrl());
+            if (MORE.equals(tag)) {
+                if(mWebView != null && loginUrl.equals(mWebView.getUrl())){
+                    moreDatas.remove(REVISEPSD);
+                    moreDatas.remove(LOGOUTSTR);
+                }else{
+                    if(!moreDatas.contains(REVISEPSD)){
+                        moreDatas.add(REVISEPSD);
+                    }
+                    if(!moreDatas.contains(LOGOUTSTR)){
+                        moreDatas.add(LOGOUTSTR);
+                    }
                 }
+
+                mPopWin = new PopWinForList(this);
+                mPopWin.setDatas(moreDatas);
+                mPopWin.setOnItemClick(this);
                 mPopWin.showPop(view);
-            } else if (HOME.equals(rightStr)) {
+            } else if (HOME.equals(tag)) {
                 loadUrl(TextUtils.isEmpty(homeUrl) ? targetUrl : homeUrl);
                 isHome = true;
-            } else if (REVISEPSD.equals(rightStr)) {
+            } else if (REVISEPSD.equals(tag)) {
                 loadUrl(revise_psd);
             }
         }
@@ -158,6 +201,9 @@ public class RefacTX5WebViewActivity extends BaseRefacTX5WebViewActivity impleme
                 break;
             case REVISEPSD:
                 loadUrl(revise_psd);
+                break;
+            case UPLOAD:
+                Beta.checkUpgrade();
                 break;
             default:
                 break;
