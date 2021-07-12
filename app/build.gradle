@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
 }
+//apply plugin: 'replugin-plugin-gradle'
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
@@ -71,6 +72,7 @@ dependencies {
     implementation libraries.smartRefreshLayout
     implementation libraries.crashreport_upgrade
     implementation libraries.bugly_nativecrashreport
+    implementation "com.qihoo360.replugin:replugin-plugin-lib:2.2.4"
 
     annotationProcessor libraries.alibabaARouterCompiler
     api libraries.alibabaARouter
